@@ -92,5 +92,7 @@ fabric.properties
 cmake-build-debug
 
 bin/
+build/
 out/
 .vs/
+.vscode/
