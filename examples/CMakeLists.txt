@@ -68,6 +68,7 @@ endfunction(buildExamples)
 set(EXAMPLES
 	triangle
 	grayfilter
+	cubes
 )
 
 buildExamples()

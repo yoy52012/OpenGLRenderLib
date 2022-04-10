@@ -151,7 +151,7 @@ namespace utils
 
     std::shared_ptr<OpenglProgram> OpenglProgram::create(std::shared_ptr<OpenglShader> &vertexShader, std::shared_ptr<OpenglShader> &fragmentShader)
     {
-        if (!vertexShader && !fragmentShader)
+        if (!vertexShader || !fragmentShader)
             return nullptr;
 
         std::shared_ptr<OpenglProgram> program = std::make_shared<OpenglProgram>();
@@ -171,8 +171,7 @@ namespace utils
     bool OpenglProgram::init(std::shared_ptr<OpenglShader> &vertexShader, std::shared_ptr<OpenglShader> &fragmentShader)
     {
         id = glCreateProgram();
-        std::cout << "Program create [" << id << "] "
-                  << "vs: " << vertexShader->id << " fs: " << fragmentShader->id << std::endl;
+        std::cout << "Program create [" << id << "] " << "vs: " << vertexShader->id << " fs: " << fragmentShader->id << std::endl;
 
         if (vertexShader->id != 0)
         {

@@ -76,14 +76,6 @@ public:
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndicesBuffer);
 
         glBindVertexArray(0);
-
-
-        // Also bind created texture ...
-        //glBindTexture(GL_TEXTURE_2D, mTexture->mId);
-        // ... and as this is texture number 0, bind the uniform to the program.
-        //glUniform1i(mTextureLocation, 0);
-
-
     }
 
     void render() override
@@ -107,9 +99,8 @@ public:
 
         mProgram->use();
 
-
         glBindVertexArray(mVAO);
-        glBindTexture(GL_TEXTURE_2D, mTexture->mId);
+        mTexture->bind(0);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     }
 
@@ -133,12 +124,10 @@ private:
 
 int main()
 {
-	GrayfilterExample* grayfilterExample = new GrayfilterExample();
-	grayfilterExample->setupWindow();
-	grayfilterExample->prepare();
-	grayfilterExample->renderLoop();
-	
-	delete(grayfilterExample);
+	GrayfilterExample grayfilterExample;
+	grayfilterExample.setupWindow();
+	grayfilterExample.prepare();
+	grayfilterExample.renderLoop();
 
     return 0;
 }
